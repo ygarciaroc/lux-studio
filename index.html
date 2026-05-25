@@ -12,35 +12,44 @@
             --ion-blue: #81D4FA;
             --text-main: #1A1A1A;
             --accent-silver: #A9A9A9;
+            --white-glass: rgba(255, 255, 255, 0.1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--platinum-base);
             color: var(--text-main);
             font-size: 1.1rem;
             line-height: 1.5;
+            overflow-x: hidden;
         }
 
-        /* Language Toggle Diva Style */
+        /* Fixed Language Toggle - Optimized for Mobile */
         .lang-switch {
             position: fixed;
-            top: 20px; right: 5%;
-            z-index: 2000;
+            top: 15px; 
+            right: 15px;
+            z-index: 3000;
             background: var(--text-main);
             color: var(--ion-blue);
-            padding: 5px 15px;
+            padding: 8px 12px;
             font-family: 'Space Grotesk';
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             cursor: pointer;
             border: 1px solid var(--ion-blue);
+            display: flex;
+            gap: 5px;
+            transition: all 0.3s ease;
         }
+        .lang-switch:hover { background: var(--ion-blue); color: var(--text-main); }
 
         header {
-            padding: 2rem 5%;
-            background: rgba(197, 197, 197, 0.95);
-            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            background: rgba(197, 197, 197, 0.9);
+            backdrop-filter: blur(15px);
             border-bottom: 2px solid var(--text-main);
             position: sticky;
             top: 0; z-index: 1000;
@@ -49,174 +58,234 @@
             align-items: center;
         }
 
-        .brand-logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.5rem; color: var(--text-main); text-decoration: none; }
-        .brand-logo span { color: var(--ion-blue); }
+        .brand-logo { 
+            font-family: 'Space Grotesk'; 
+            font-weight: 700; 
+            font-size: 1.4rem; 
+            color: var(--text-main); 
+            text-decoration: none; 
+            letter-spacing: 2px;
+        }
 
-        nav a { margin-left: 20px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        nav a { margin-left: 20px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Full Bleed Hero */
+        /* Hero Section */
         .hero {
-            padding: 100px 5%;
+            padding: 80px 5%;
             display: grid;
             grid-template-columns: 1.5fr 1fr;
             align-items: center;
             border-bottom: 1px solid rgba(0,0,0,0.1);
         }
-        .hero h1 { font-family: 'Cormorant Garamond'; font-size: clamp(3rem, 8vw, 6rem); line-height: 0.9; margin-bottom: 20px; }
-        .hero p { border-left: 5px solid var(--ion-blue); padding-left: 20px; font-size: 1.3rem; max-width: 600px; }
+        .hero h1 { font-family: 'Cormorant Garamond'; font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; }
+        .hero p { border-left: 5px solid var(--ion-blue); padding-left: 20px; font-size: 1.2rem; max-width: 600px; }
 
-        /* Service Catalogue Grid */
-        .section-title { font-family: 'Cormorant Garamond'; font-size: 3.5rem; margin-bottom: 40px; padding: 0 5%; }
+        /* Catalogue Section */
+        .section-title { font-family: 'Cormorant Garamond'; font-size: 3rem; margin-top: 60px; margin-bottom: 30px; padding: 0 5%; }
         .catalogue { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); border-top: 1px solid #000; }
         .service-item { padding: 40px 5%; border-right: 1px solid rgba(0,0,0,0.1); border-bottom: 1px solid rgba(0,0,0,0.1); transition: 0.3s; }
-        .service-item:hover { background: var(--ion-blue); color: #000; }
+        .service-item:hover { background: var(--text-main); color: var(--platinum-base); }
         .service-item h3 { font-family: 'Space Grotesk'; text-transform: uppercase; margin-bottom: 15px; }
-        .rate { font-weight: 700; font-size: 1.2rem; display: block; margin-top: 20px; color: var(--text-soft); }
 
-        /* Workshop & License Zone */
+        /* NEW: Project Gallery Boxes */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            padding: 0 5% 60px 5%;
+        }
+        .work-box {
+            background: #D1D1D1;
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: 0.3s;
+        }
+        .work-box:hover { border-color: var(--ion-blue); transform: translateY(-5px); }
+        .work-box .img-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: var(--titanium-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-silver);
+            font-family: 'Space Grotesk';
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        .tag { font-size: 0.7rem; font-family: 'Space Grotesk'; border: 1px solid var(--text-main); padding: 2px 8px; width: fit-content; }
+
+        /* Industrial Zone */
         .industrial-zone { background: var(--titanium-dark); color: var(--platinum-base); padding: 80px 5%; }
         .license-card { border: 1px solid var(--ion-blue); padding: 30px; margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .hour-log { background: #444; height: 10px; width: 100%; margin-top: 10px; position: relative; }
-        .hour-progress { background: var(--ion-blue); height: 100%; width: 35%; } /* Adjust % as you log hours */
+        .hour-progress { background: var(--ion-blue); height: 100%; width: 5%; }
 
-        /* Blog Covers */
-        .blog-shelf { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 0 5%; background: #000; }
-        .blog-cover { background: var(--platinum-base); padding: 40px 20px; aspect-ratio: 3/4; display: flex; flex-direction: column; justify-content: flex-end; cursor: pointer; transition: 0.3s; }
-        .blog-cover:hover { transform: translateY(-10px); background: var(--ion-blue); }
+        /* Freelance Hub */
+        .freelance-links {
+            padding: 40px 5%;
+            background: #E0E0E0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+        .freelance-btn {
+            background: transparent;
+            border: 2px solid var(--text-main);
+            padding: 12px 25px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: 'Space Grotesk';
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        .freelance-btn:hover { background: var(--text-main); color: var(--ion-blue); }
 
-        /* Affiliates Banner */
-        .alliance-bar { background: #000; color: #fff; padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .alliance-btn { border: 1px solid var(--ion-blue); padding: 10px 30px; color: var(--ion-blue); text-decoration: none; font-family: 'Space Grotesk'; }
+        footer { padding: 60px 5%; border-top: 5px solid var(--ion-blue); background: var(--platinum-base); }
 
-        footer { padding: 60px 5%; border-top: 5px solid var(--ion-blue); }
-
+        /* Responsive Fixes */
         @media (max-width: 900px) {
-            .hero, .license-card, .blog-shelf { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; }
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero p { border-left: none; border-top: 5px solid var(--ion-blue); padding-top: 15px; padding-left: 0; margin: 0 auto; }
+            .license-card { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<div class="lang-switch" onclick="toggleLang()">ESPAÑOL | EN</div>
+<div class="lang-switch" id="langBtn" onclick="toggleLang()">
+    <span>EN</span> | <span>ES</span>
+</div>
 
 <header>
-    <a href="#" class="brand-logo">LUX STUDIO <span>CO.</span></a>
+    <a href="#" class="brand-logo">LUX STUDIO</a>
     <nav>
         <a href="#services">Services</a>
+        <a href="#work">Work</a>
         <a href="#workshop">Workshop</a>
-        <a href="#notebook">Notebook</a>
         <a href="#about">About</a>
     </nav>
 </header>
 
 <section class="hero">
     <div>
-        <h1>Electrical <br>Engineer <em>In Formation.</em></h1>
-        <p>Providing high-precision PCB Layout, Schematic Capture, and Residential Electrical Design. <br><strong>Expected Graduation: Aug - Dec 2027.</strong></p>
+        <h1 id="heroTitle">Electrical <br>Engineer <em>In Formation.</em></h1>
+        <p>High-precision PCB Layout, Schematic Capture, and Residential Electrical Design for binational markets.</p>
     </div>
-    <div style="text-align: right;">
+    <div style="text-align: right;" class="mobile-hide">
         <span style="font-family: 'Space Grotesk'; font-size: 0.8rem; letter-spacing: 3px;">UT EL PASO // MICROSOFT SILICON ALUM</span>
     </div>
 </section>
 
+<!-- SERVICES SECTION -->
 <h2 class="section-title" id="services">Service Catalogue</h2>
 <section class="catalogue">
     <div class="service-item">
         <span style="color:var(--ion-blue)">01</span>
         <h3>PCB Design & CAD</h3>
-        <p>Multilayer board layout, impedance matching, and 3D mechanical integration using Altium/Siemens EDA.</p>
-        <span class="rate">Global Rates // Project Based</span>
+        <p>Multilayer board layout, impedance matching, and 3D mechanical integration.</p>
+        <span style="font-weight: bold; margin-top: 15px; display: block;">Altium / KiCad / Siemens</span>
     </div>
     <div class="service-item">
         <span style="color:var(--ion-blue)">02</span>
         <h3>Residential Load Analysis</h3>
-        <p>Calculation of circuit loads, panel upgrades, and NEC compliance blueprints for the El Paso/Juarez region.</p>
-        <span class="rate">Local Rates // $XX per hour</span>
+        <p>NEC compliance blueprints and circuit load calculations for TX/MX region.</p>
+        <span style="font-weight: bold; margin-top: 15px; display: block;">Revit / AutoCAD</span>
     </div>
     <div class="service-item">
         <span style="color:var(--ion-blue)">03</span>
-        <h3>Technical Consulting</h3>
-        <p>Bilingual (EN/ES) documentation and engineering verification for binational hardware startups.</p>
-        <span class="rate">Retainer Available</span>
+        <h3>3D Modeling & Enclosures</h3>
+        <p>Mechanical design for electrical housing and industrial parts.</p>
+        <span style="font-weight: bold; margin-top: 15px; display: block;">SolidWorks / Fusion 360</span>
     </div>
 </section>
+
+<!-- PROJECT SHOWCASE SECTION -->
+<h2 class="section-title" id="work">Selected Work Samples</h2>
+<div class="portfolio-grid">
+    <!-- Box 1: SolidWorks -->
+    <div class="work-box">
+        <div class="tag">Mechanical Design</div>
+        <div class="img-placeholder">[ SolidWorks Assembly View ]</div>
+        <h3>Industrial Enclosure</h3>
+        <p>Aluminum housing design with thermal dissipation analysis for power converters.</p>
+    </div>
+    
+    <!-- Box 2: PCB Design -->
+    <div class="work-box">
+        <div class="tag">Electronics</div>
+        <div class="img-placeholder">[ Altium / KiCad PCB Render ]</div>
+        <h3>4-Layer Control Board</h3>
+        <p>High-speed signal integrity layout for embedded IoT systems.</p>
+    </div>
+
+    <!-- Box 3: Residential/CAD -->
+    <div class="work-box">
+        <div class="tag">Electrical Systems</div>
+        <div class="img-placeholder">[ Revit / AutoCAD Blueprint ]</div>
+        <h3>Residential Panel Upgrade</h3>
+        <p>Full schematic capture for a 200A service entry remodel.</p>
+    </div>
+</div>
 
 <section class="industrial-zone" id="workshop">
     <h2 class="section-title" style="color: var(--ion-blue); padding: 0;">Electrical Workshop</h2>
     <div class="license-card">
         <div>
-            <span class="label">Apprentice License // Texas #XXXX</span>
+            <span class="label">Apprentice License // Texas</span>
             <h3 style="font-family: 'Cormorant Garamond'; font-size: 2.5rem; margin: 15px 0;">Residential Log</h3>
-            <p>Currently logging hours toward Journeyman status. Specializing in smart-home integration and historical restoration wiring.</p>
+            <p>Direct field experience in smart-home integration and historical restoration wiring.</p>
             <div class="hour-log"><div class="hour-progress"></div></div>
-            <p style="font-size: 0.8rem; margin-top: 10px;">Hours Logged: 100 / 8,000</p>
+            <p style="font-size: 0.8rem; margin-top: 10px;">Hours Logged Toward Journeyman: Field Verified</p>
         </div>
-        <div style="background: #444; aspect-ratio: 16/9;">
-            <!-- Space for local project gallery -->
-        </div>
-    </div>
-</section>
-
-<section class="section" id="notebook">
-    <h2 class="section-title">Technical Notebook</h2>
-    <div class="blog-shelf">
-        <div class="blog-cover">
-            <span>May 2026</span>
-            <h3 style="font-family: 'Cormorant Garamond';">Power Integrity in 4-Layer Boards</h3>
-        </div>
-        <div class="blog-cover">
-            <span>April 2026</span>
-            <h3 style="font-family: 'Cormorant Garamond';">NEC Compliance in El Paso Residential</h3>
-        </div>
-        <div class="blog-cover">
-            <span>March 2026</span>
-            <h3 style="font-family: 'Cormorant Garamond';">From Microsoft Silicon to Freelance</h3>
+        <div style="background: #444; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 0.7rem; color: #888;">[ PHOTO OF SITE INSTALLATION ]</span>
         </div>
     </div>
 </section>
 
-<section class="alliance-bar">
-    <div>
-        <h3 style="font-family: 'Space Grotesk';">Strategic Alliance: METALU CNC ✦ MX</h3>
-        <p style="font-size: 0.9rem; opacity: 0.8;">Industrial laser cutting and aluminum fabrication services.</p>
-    </div>
-    <a href="https://www.facebook.com/share/1DRrP1aXyr/?mibextid=wwXIfr="_blank" class="alliance-btn">Get Fabrication Quote</a>
-</section>
-
-<section class="section" id="about">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-        <div>
-            <h2 class="section-title" style="padding: 0;">Education & Certs</h2>
-            <ul style="list-style: none; margin-top: 20px;">
-                <li style="margin-bottom: 20px;"><strong>B.S. Electrical Engineering</strong><br>University of Texas at El Paso (UTEP)</li>
-                <li style="margin-bottom: 20px;"><strong>Intel Cleanroom Certification</strong><br>Nanotechnology Research Center</li>
-                <li><strong>Silicon Engineering Internship</strong><br>Microsoft - Mountain View, CA</li>
-            </ul>
-        </div>
-        <div>
-            <h2 class="section-title" style="padding: 0;">Experience</h2>
-            <p>Directed toward the convergence of physical electrical labor and high-level silicon design. At age 22, I bridge the gap between "the tools" and "the desk."</p>
-            <a href="resume.pdf" class="alliance-btn" style="display: inline-block; margin-top: 20px; color: var(--text-main); border-color: var(--text-main);">Download Professional CV</a>
-        </div>
+<section class="freelance-hub">
+    <h2 class="section-title" style="margin-top: 0; padding: 40px 5% 20px 5%;">Hire Me On</h2>
+    <div class="freelance-links">
+        <a href="#" class="freelance-btn">UPWORK ↗</a>
+        <a href="#" class="freelance-btn">FIVERR ↗</a>
+        <a href="mailto:your-email@example.com" class="freelance-btn" style="border-color: var(--ion-blue);">DIRECT INQUIRY ✉</a>
     </div>
 </section>
 
 <footer>
-    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
         <div>
-            <p>LUX STUDIO | EL PASO & JUAREZ</p>
-            <p style="font-size: 0.8rem; opacity: 0.6;">Specializing in binational engineering standards.</p>
+            <p style="font-weight: bold;">LUX STUDIO</p>
+            <p style="font-size: 0.8rem; opacity: 0.6;">Bridging the gap between the tools and the desk.</p>
+            <p style="font-size: 0.8rem;">El Paso, TX — Cd. Juárez, MX</p>
         </div>
         <div style="text-align: right;">
-            <a href="#" style="color: var(--text-main); margin-left: 20px;">LinkedIn</a>
-            <a href="#" style="color: var(--text-main); margin-left: 20px;">Instagram</a>
+            <a href="#" style="color: var(--text-main); margin-left: 20px; font-size: 0.8rem;">LinkedIn</a>
+            <a href="#" style="color: var(--text-main); margin-left: 20px; font-size: 0.8rem;">Instagram</a>
         </div>
     </div>
 </footer>
 
 <script>
     function toggleLang() {
-        alert("Dual Language Logic: Create a copy of this file and replace text with Spanish translations provided in your documentation.");
+        const title = document.getElementById('heroTitle');
+        const btn = document.getElementById('langBtn');
+        
+        if(title.innerText.includes("Engineer")) {
+            title.innerHTML = "Ingeniera Eléctrica <br><em>En Formación.</em>";
+            btn.innerHTML = "<span>ES</span> | EN";
+        } else {
+            title.innerHTML = "Electrical <br>Engineer <em>In Formation.</em>";
+            btn.innerHTML = "<span>EN</span> | ES";
+        }
     }
 </script>
 
