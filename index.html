@@ -48,7 +48,7 @@
             letter-spacing: 2px;
         }
 
-        /* Contenedor de la navegación derecha */
+        /* Nav layout container */
         .nav-container {
             display: flex;
             align-items: center;
@@ -58,7 +58,7 @@
         nav a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; }
         nav a:first-child { margin-left: 0; }
 
-        /* Botón de Idioma Integrado y Limpio */
+        /* Integrated language switcher */
         .lang-switch {
             background: var(--text-main);
             color: var(--ion-blue);
@@ -175,7 +175,7 @@
 
         footer { padding: 60px 5%; border-top: 5px solid var(--ion-blue); background: var(--platinum-base); }
 
-        /* Responsive Fixes */
+        /* Responsive Breakpoints */
         @media (max-width: 900px) {
             header { flex-direction: column; gap: 15px; padding: 1.5rem 5%; }
             .nav-container { flex-direction: column; gap: 15px; width: 100%; }
@@ -374,9 +374,12 @@
         const desc = document.getElementById('heroDesc');
         const btn = document.getElementById('langBtn');
         
+        // Check current button state safely
+        const isEnglish = btn.innerText.includes("EN");
         const translatableElements = document.querySelectorAll('[data-en]');
         
-        if(title.innerText.includes("Engineer")) {
+        if(isEnglish) {
+            // SWITCH TO SPANISH
             title.innerHTML = "Ingeniera Eléctrica <br><em>En Formación.</em>";
             desc.innerHTML = "Diseño de PCB de alta precisión, captura de esquemáticos y diseño eléctrico residencial para mercados binacionales.";
             btn.innerHTML = "<span>ES</span> | EN";
@@ -385,6 +388,7 @@
                 el.innerText = el.getAttribute('data-es');
             });
         } else {
+            // SWITCH TO ENGLISH
             title.innerHTML = "Electrical <br>Engineer <em>In Formation.</em>";
             desc.innerHTML = "High-precision PCB Layout, Schematic Capture, and Residential Electrical Design for binational markets.";
             btn.innerHTML = "<span>EN</span> | ES";
